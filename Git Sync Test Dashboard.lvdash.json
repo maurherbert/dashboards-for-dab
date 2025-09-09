@@ -48,7 +48,10 @@
                       "max": 10300
                     }
                   },
-                  "displayName": "pickup_zip"
+                  "axis": {
+                    "title": "pickup "
+                  },
+                  "displayName": "pickup "
                 },
                 "y": {
                   "fieldName": "sum(trip_distance)",
