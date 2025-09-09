@@ -44,7 +44,7 @@
                   "scale": {
                     "type": "quantitative",
                     "domain": {
-                      "min": 9800,
+                      "min": 9000,
                       "max": 10300
                     }
                   },
