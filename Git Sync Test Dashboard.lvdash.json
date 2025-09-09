@@ -1,0 +1,181 @@
+{
+  "datasets": [
+    {
+      "name": "a16f0646",
+      "displayName": "trips",
+      "queryLines": [
+        "SELECT * FROM samples.nyctaxi.trips"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "a8c3d0d6",
+      "displayName": "Summary",
+      "layout": [
+        {
+          "widget": {
+            "name": "74972b70",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "a16f0646",
+                  "fields": [
+                    {
+                      "name": "pickup_zip",
+                      "expression": "`pickup_zip`"
+                    },
+                    {
+                      "name": "sum(trip_distance)",
+                      "expression": "SUM(`trip_distance`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "pickup_zip",
+                  "scale": {
+                    "type": "quantitative",
+                    "domain": {
+                      "min": 10000,
+                      "max": 10300
+                    }
+                  },
+                  "displayName": "pickup_zip"
+                },
+                "y": {
+                  "fieldName": "sum(trip_distance)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Sum of trip_distance"
+                }
+              },
+              "frame": {
+                "title": "Trip Distance by Pickup Zip",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 3,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "b40d55da",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "a16f0646",
+                  "fields": [
+                    {
+                      "name": "dropoff_zip",
+                      "expression": "`dropoff_zip`"
+                    },
+                    {
+                      "name": "sum(fare_amount)",
+                      "expression": "SUM(`fare_amount`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "dropoff_zip",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "dropoff_zip"
+                },
+                "y": {
+                  "fieldName": "sum(fare_amount)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Sum of fare_amount"
+                }
+              },
+              "frame": {
+                "title": "Fare Amount by Dropoff Zip",
+                "showTitle": true
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 0,
+            "width": 3,
+            "height": 8
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    }
+  }
+}
