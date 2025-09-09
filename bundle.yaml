@@ -1,0 +1,18 @@
+bundle:
+  name: dashboards-for-dab
+  
+workspace:
+  host: https://dbc-c4b99574-51a6.cloud.databricks.com/
+  # path: /Workspace/Repos/maureen287rachel@gmail.com/dashboards-for-dab
+
+resources:
+  dashboards:
+    # display_name: "Git Sync Test Dashboard"
+    # warehouse_id: "53d5c8ee7fe1d8e2"
+    GitSyncTestDashboard:
+      path: Git Sync Test Dashboard.lvdash.json
+      permissions:
+        - level: CAN_MANAGE
+          group_name: dashboard_admins
+        - level: CAN_EDIT
+          group_name: dashboard_editors
