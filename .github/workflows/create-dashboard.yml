@@ -1,0 +1,17 @@
+name: Create Dashboard File
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create empty dashboard file
+        run: |
+          mkdir -p src
+          echo '{}' > src/StarterDashboard.lvdash.json
+
+      - name: Show created file
+        run: ls -l src/*.lvdash.json

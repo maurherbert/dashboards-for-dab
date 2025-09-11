@@ -30,8 +30,29 @@ resources:
       warehouse_id: 53d5c8ee7fe1d8e2
 
     StarterDashboard2:
-      path: StarterDashboard2.lvdash.json
+      path: src/StarterDashboard2.lvdash.json
       display_name: "Starter Dashboard2"
+      permissions:
+        - level: CAN_MANAGE
+          group_name: users
+        - level: CAN_EDIT
+          group_name: users
+      warehouse_id: 53d5c8ee7fe1d8e2
+
+    StarterDashboard3:
+      path: src/StarterDashboard3.lvdash.json
+      display_name: "Starter Dashboard3"
+      permissions:
+        - level: CAN_MANAGE
+          group_name: users
+        - level: CAN_EDIT
+          group_name: users
+      warehouse_id: 53d5c8ee7fe1d8e2
+      
+    StarterDashboard4:
+      path: StarterDashboard4.lvdash.json
+      file_path: ../src/StarterDashboard4.lvdash.json
+      display_name: "Starter Dashboard4"
       permissions:
         - level: CAN_MANAGE
           group_name: users
