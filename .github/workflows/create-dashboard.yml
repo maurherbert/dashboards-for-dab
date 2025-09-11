@@ -1,17 +1,33 @@
-name: Create Dashboard File
+name: Create and Commit Dashboard File
 
 on:
-  workflow_dispatch:  # Manual trigger only
+  workflow_dispatch:  # Manual trigger
 
 jobs:
-  generate:
+  generate-and-commit:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write  # Required to push to the repo
+
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: true  # Needed to push
+
+      - name: Set up Git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Create empty dashboard file
         run: |
           mkdir -p src
           echo '{}' > src/StarterDashboard.lvdash.json
 
-      - name: Show created file
-        run: ls -l src/*.lvdash.json
+      - name: Commit and push changes
+        run: |
+          git add src/StarterDashboard.lvdash.json
+          git commit -m "Add empty StarterDashboard.lvdash.json from workflow" || echo "Nothing to commit"
+          git push
