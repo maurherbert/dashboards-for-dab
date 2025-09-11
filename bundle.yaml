@@ -5,9 +5,9 @@ workspace:
   host: https://dbc-c4b99574-51a6.cloud.databricks.com/
   # path: /Workspace/Repos/maureen287rachel@gmail.com/dashboards-for-dab
 
-sync:
-  exclude:
-    - src/*.lvdash.json
+# sync:
+#   exclude:
+#     - src/*.lvdash.json
 
 resources:
   dashboards:
@@ -33,19 +33,10 @@ resources:
           group_name: users
       warehouse_id: 53d5c8ee7fe1d8e2
 
-    StarterDashboard2:
-      path: src/StarterDashboard2.lvdash.json
-      display_name: "Starter Dashboard2"
-      permissions:
-        - level: CAN_MANAGE
-          group_name: users
-        - level: CAN_EDIT
-          group_name: users
-      warehouse_id: 53d5c8ee7fe1d8e2
 
-    StarterDashboard3:
-      path: src/StarterDashboard3.lvdash.json
-      display_name: "Starter Dashboard3"
+    StarterDashboardTestCase1:
+      path: StarterDashboardTestCase1.lvdash.json
+      display_name: "Starter Dashboard Test Case 1"
       permissions:
         - level: CAN_MANAGE
           group_name: users
@@ -53,15 +44,6 @@ resources:
           group_name: users
       warehouse_id: 53d5c8ee7fe1d8e2
       
-    StarterDashboard4:
-      path: src/StarterDashboard4.lvdash.json
-      #file_path: ../src/StarterDashboard4.lvdash.json
-      display_name: "Starter Dashboard4"
-      permissions:
-        - level: CAN_MANAGE
-          group_name: users
-        - level: CAN_EDIT
-          group_name: users
-      warehouse_id: 53d5c8ee7fe1d8e2
+    
 
   
