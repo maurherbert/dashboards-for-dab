@@ -5,6 +5,10 @@ workspace:
   host: https://dbc-c4b99574-51a6.cloud.databricks.com/
   # path: /Workspace/Repos/maureen287rachel@gmail.com/dashboards-for-dab
 
+sync:
+  exclude:
+    - src/*.lvdash.json
+
 resources:
   dashboards:
     # display_name: "Git Sync Test Dashboard"
@@ -50,8 +54,8 @@ resources:
       warehouse_id: 53d5c8ee7fe1d8e2
       
     StarterDashboard4:
-      path: StarterDashboard4.lvdash.json
-      file_path: ../src/StarterDashboard4.lvdash.json
+      path: src/StarterDashboard4.lvdash.json
+      #file_path: ../src/StarterDashboard4.lvdash.json
       display_name: "Starter Dashboard4"
       permissions:
         - level: CAN_MANAGE
@@ -60,4 +64,4 @@ resources:
           group_name: users
       warehouse_id: 53d5c8ee7fe1d8e2
 
-    
+  
