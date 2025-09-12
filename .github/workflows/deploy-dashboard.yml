@@ -25,5 +25,5 @@ jobs:
           sed -i 's/\${catalog_name}/'"${{ github.event.inputs.CATALOG_NAME }}"'/g' src/StarterDashboard.lvdash.json
 
       - name: Deploy dashboard bundle
-        run: databricks bundle deploy --profile ${{ github.event.inputs.DEPLOY_ENV }}
+        run: databricks bundle deploy --profile worskspace
 
