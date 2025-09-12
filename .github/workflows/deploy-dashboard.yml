@@ -1,19 +1,16 @@
-name: Deploy Dashboards
+name: Deploy Dashboard
 
 on:
   workflow_dispatch:
     inputs:
       DEPLOY_ENV:
-        description: 'Deployment environment'
+        description: 'Deployment environment (e.g., dev, prod)'
         required: true
         default: 'dev'
       CATALOG_NAME:
-        description: 'Catalog name to use'
+        description: 'Catalog name to use in the dashboard JSON'
         required: true
         default: 'nyctaxi_dev'
-
-permissions:
-  contents: write  # needed if you push anything
 
 jobs:
   deploy:
@@ -22,28 +19,11 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-        with:
-          persist-credentials: true  # if you push later
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-      - name: Install build dependencies
+      - name: Inject catalog name into JSON
         run: |
-             pip install cython
+          sed -i 's/\${catalog_name}/'"${{ github.event.inputs.CATALOG_NAME }}"'/g' src/StarterDashboard.lvdash.json
 
-      - name: Install dependencies
-        run: |
-          pip install databricks-cli databricks-bundle
+      - name: Deploy dashboard bundle
+        run: databricks bundle deploy --profile ${{ github.event.inputs.DEPLOY_ENV }}
 
-      - name: Render dashboard JSON for environment
-        env:
-          DEPLOY_ENV: ${{ github.event.inputs.DEPLOY_ENV }}
-          CATALOG_NAME: ${{ github.event.inputs.CATALOG_NAME }}
-        run: |
-          python scripts/render_dashboard.py
-
-      - name: Deploy dashboards
-        run: |
-          databricks bundle deploy --profile ${{ github.event.inputs.DEPLOY_ENV }}
