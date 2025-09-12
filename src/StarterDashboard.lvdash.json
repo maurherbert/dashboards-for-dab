@@ -1,1 +1,16 @@
-{}
+{
+  "name": "Starter Dashboard",
+  "description": "Dashboard for environment: ${env}",
+  "widgets": [
+    {
+      "title": "Taxi Trips Overview",
+      "type": "table",
+      "query": "SELECT * FROM ${catalog_name}.trips LIMIT 100"
+    },
+    {
+      "title": "Daily Trips Count",
+      "type": "line_chart",
+      "query": "SELECT date, count(*) as trips FROM ${catalog_name}.trips WHERE date >= CURRENT_DATE - INTERVAL 30 DAYS GROUP BY date ORDER BY date"
+    }
+  ]
+}

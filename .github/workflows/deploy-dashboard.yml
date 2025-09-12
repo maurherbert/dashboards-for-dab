@@ -1,0 +1,41 @@
+name: Deploy Dashboards
+
+on:
+  workflow_dispatch:
+    inputs:
+      DEPLOY_ENV:
+        description: 'Deployment environment'
+        required: true
+        default: 'dev'
+      CATALOG_NAME:
+        description: 'Catalog name to use'
+        required: true
+        default: 'nyctaxi_dev'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          echo "No dependencies to install"
+
+      - name: Render dashboard JSON for environment
+        env:
+          DEPLOY_ENV: ${{ github.event.inputs.DEPLOY_ENV }}
+          CATALOG_NAME: ${{ github.event.inputs.CATALOG_NAME }}
+        run: |
+          python scripts/render_dashboard.py
+
+      - name: Deploy dashboards
+        run: |
+          databricks bundle deploy --profile ${{ github.event.inputs.DEPLOY_ENV }}
