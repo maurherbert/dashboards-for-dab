@@ -27,7 +27,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          echo "No dependencies to install"
+          pip install databricks-cli databricks-bundle
 
       - name: Render dashboard JSON for environment
         env:
